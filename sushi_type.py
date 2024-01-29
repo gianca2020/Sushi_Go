@@ -1,22 +1,45 @@
-#every player that pulls a dumpling gets 1 points, two dumplings is 3 points, three dumplings is 6 points, 4 dumplings is 10 points, and 5 dumplings is 15
-#there are 108 cards in a deck
+cards = [1] * 108
 
-card_values = {
-    "tempura": 14,
-    "sashimi": 14,
-    "dumpling": 14,
-    "maki": 26,
-    "salmon nigiri": 10,
-    "squid nigiri": 5,
-    "egg nigiri": 5,
-    "pudding": 10,
-    "wasabi": 6,
-    "chopstick": 4
-}
+class Card(object):
+    def __init__(self, name, value):
+        self.name = name
+        self.value = value
 
-player_cards = {}
+    #the dumpling is scored based on how many dumplings are present, so one dumpling is one pont, 2=3, 3=6, 4=10, 5(and more)=15
+    def dumpling(self,d):
+        if d >= 5:
+            return 15
 
-def take_card(players, card_name):
+        for i in range(1, d + 1):
+            sum = (d + (d + 1) //2)
+        return sum
+    #you need to have a pair of tempura to get the neccecary amount of points
+    def tempura(self, t):
+        if(t !=2):
+            return 0
+        else:
+            return 5
+
+    def sashimi(self, s):
+        if (s != 3):
+            return 0
+        else:
+            return 10
+
+
+
+    def nigiri(self, n):
+        if self.name in ["Egg Nigiri", "Salmon Nigiri", "Squid Nigiri"]:
+            base_score = {"Egg Nigiri": 1, "Salmon Nigiri": 2, "Squid Nigiri": 3}[self.name]
+        if wasabi_count > 0:
+            return base_score * 3  # Triple the score if Wasabi is available
+        else:
+            return base_score
+
+    #def pudding(self, p):
+
+
+wasabi_count = 0
 
 
 
